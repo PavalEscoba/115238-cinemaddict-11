@@ -1,7 +1,7 @@
 # Личный проект «Киноман» [![Build status][travis-image]][travis-url]
 
 * Студент: [Павал Мятлицки](https://up.htmlacademy.ru/ecmascript/11/user/115238).
-* Наставник: `Неизвестно`.
+* Наставник: `Без наставника`.
 
 ---
 
