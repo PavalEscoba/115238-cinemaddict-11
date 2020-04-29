@@ -13,3 +13,19 @@ export const getRandomArrayItem = (array) => {
 export const getBool = () => {
   return Math.random() > 0.5;
 };
+
+export const getShortDescription = (desc) => {
+  if (desc.length > 140) {
+    return desc.slice(0, 141) + `...`;
+  }
+  return desc;
+};
+
+export const getSeveralArrayItems = (array, count) => {
+  let newArray = [];
+  while (count) {
+    newArray.push(getRandomArrayItem(array));
+    count--;
+  }
+  return newArray;
+};

@@ -6,3 +6,10 @@ export const DESCRIPTION = [`1 Lorem ipsum dolor sit amet, consectetur adipiscin
 
 export const GENRES = [`Comedy`, `Drama`, `Cartoon`, `Western`, `Musical`, `Mystery`];
 
+export const DIRECTORS_NAMES = [`Anthony Mann`, `David Lynch`, `Martin Scorsese`, `Joel and Ethan Coen`, `Steven Soderbergh`, `Terrence Malick`, `Errol Morris`, `Hayao Miyazaki`, `David Cronenberg`, `David Fincher`];
+
+export const WRITERS_NAMES = [`Anne Wigton`, `Heinz Herald`, `Richard Weil`, `Steven Zaillian`, `Joss Whedon`, `Ernest Lehman`];
+
+export const ACTORS_NAMES = [`Jack Nicholson`, `Marlon Brando`, `Robert De Niro`, `Paul Newman`, `Spencer Tracy`, `Meryl Streep`, `Ingrid Bergman`, `Vivien Leigh`, `Bette Davis`, `Audrey Hepburn`];
+
+export const MONTHS = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
