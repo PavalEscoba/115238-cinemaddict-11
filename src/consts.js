@@ -13,3 +13,11 @@ export const WRITERS_NAMES = [`Anne Wigton`, `Heinz Herald`, `Richard Weil`, `St
 export const ACTORS_NAMES = [`Jack Nicholson`, `Marlon Brando`, `Robert De Niro`, `Paul Newman`, `Spencer Tracy`, `Meryl Streep`, `Ingrid Bergman`, `Vivien Leigh`, `Bette Davis`, `Audrey Hepburn`];
 
 export const MONTHS = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
+
+export const COMMENT_EMOTIONS = [`smile`, `sleeping`, `puke`, `angry`];
+
+export const COMMENT_TEXTS = [`Interesting setting and a good cast`, `Booooooooooring`, `Very very old. Meh`, `Almost two hours? Seriously?`];
+
+export const COMMENT_AUTHORS = [`Tim Macoveev`, `John Doe`, `Juggernaut`, `Berserk`, `Leu`, `Konig`];
+
+export const COMMENT_DATES = [`2017/10/25 16:32`, `2019/12/31 15:15`, `2020/01/22 02:37`, `2019/06/02 23:59`, `2019/05/01 10:17`];
