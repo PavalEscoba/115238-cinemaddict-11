@@ -21,3 +21,5 @@ export const COMMENT_TEXTS = [`Interesting setting and a good cast`, `Booooooooo
 export const COMMENT_AUTHORS = [`Tim Macoveev`, `John Doe`, `Juggernaut`, `Berserk`, `Leu`, `Konig`];
 
 export const COMMENT_DATES = [`2017/10/25 16:32`, `2019/12/31 15:15`, `2020/01/22 02:37`, `2019/06/02 23:59`, `2019/05/01 10:17`];
+
+export const PROFILE_STATUS = [`Novice`, `Fan`, `Movie Buff`];

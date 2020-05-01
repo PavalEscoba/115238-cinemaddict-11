@@ -29,3 +29,7 @@ export const getSeveralArrayItems = (array, count) => {
   }
   return newArray;
 };
+
+export const getFirstCharUppercase = (str) => {
+  return str[0].toUpperCase() + str.slice(1);
+};

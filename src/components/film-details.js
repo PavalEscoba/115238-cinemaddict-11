@@ -4,8 +4,8 @@ const generateGenresMarkup = (genresArray) => {
   }).join(`\n`);
 };
 
-const displayCheckedAttribute = (bool) => {
-  return bool ? `checked` : ``;
+const displayCheckedAttribute = (isChecked) => {
+  return isChecked ? `checked` : ``;
 };
 
 const generateCommentsMarkup = (commentsArray) => {
