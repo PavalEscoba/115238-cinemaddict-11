@@ -1,5 +1,5 @@
-export const createFooterStatisticTemplate = () => {
+export const createFooterStatisticTemplate = (total) => {
   return `<section class="footer__statistics">
-        <p>130 291 movies inside</p>
+        <p>${total.toLocaleString(`ru-RU`)} movies inside</p>
       </section>`;
 };
