@@ -1,3 +1,5 @@
+import {createElement} from "../utils";
+
 const generateGenresMarkup = (genresArray) => {
   return genresArray.map((genre) => {
     return `<span class="film-details__genre">${genre}</span>`;
@@ -28,7 +30,7 @@ const generateCommentsMarkup = (commentsArray) => {
   }).join(`\n`);
 };
 
-export const createFilmDetailsTemplate = (film) => {
+const createFilmDetailsTemplate = (film) => {
   const {poster, age, title, originalTitle, rating, comments, directorName, writerNames, actorNames, releaseDate, duration, country, genres, description, isAddedToWatchList, isWatched, isFavorite} = film;
 
   const genresMarkup = generateGenresMarkup(genres);
@@ -134,3 +136,26 @@ export const createFilmDetailsTemplate = (film) => {
       </form>
     </section>`;
 };
+
+export default class FilmDetailsComponent {
+  constructor(film) {
+    this._film = film;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createFilmDetailsTemplate(this._film);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
