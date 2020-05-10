@@ -1,15 +1,11 @@
-// Знайсці Хэдэр і ўставіць Профіль.
-// Знайсці мэйн уставіць фільтры
-// Знайсці Футэр і уставіць Тотал.
-
 import HeaderProfileComponent from "./components/profile";
 import FilterComponent from "./components/filter";
 import SortComponent from "./components/sort";
 import FilmsBoardComponent from "./components/film-board";
 import FilmsListComponent from "./components/films-list";
 import FilmCardComponent from "./components/film-card";
-// import {createExtraFilmsTemplate} from "./components/extra-film";
-// import {createFilmDetailsTemplate} from "./components/film-details";
+import ExtraFilmComponent from "./components/extra-film";
+import FilmDetailsComponent from "./components/film-details";
 import ShowMoreBtnComponent from "./components/show-more-btn";
 import {FooterStatisticComponent} from "./components/footer-stats";
 
@@ -28,6 +24,10 @@ const SHOWING_MOVIES_COUNT_BY_BUTTON = 5;
 
 const films = generateFilmsList(MAIN_MOVIE_COUNT);
 const filters = generateFilters();
+const topRatedFilms = films.slice().sort((a, b)=> b.rating - a.rating).slice(0, 2);
+// console.log(`topRatedFilms`, topRatedFilms);
+const mostCommentedFilms = films.slice().sort((a, b) => b.comments.length - a.comments.length).slice(0, 2);
+// console.log(`mostCommentedFilms`, mostCommentedFilms);
 
 const user = generateUser();
 const pageHeaderElement = document.querySelector(`.header`);
@@ -43,7 +43,10 @@ render(pageFooterStats, new FooterStatisticComponent(filmsTotal).getElement(), R
 
 const renderFilm = (board, film) => {
   const filmCard = new FilmCardComponent(film);
+  const filmDetailsCard = new FilmDetailsComponent();
   render(board, filmCard.getElement(), RenderPosition.BEFOREEND);
+
+  c
 };
 
 const renderFilmBoard = (filmsBoard, movies) => {
@@ -51,6 +54,7 @@ const renderFilmBoard = (filmsBoard, movies) => {
 
   const filmsListElement = filmsBoard.getElement().querySelector(`.films-list`);
   const filmsListContainerElement = filmsBoard.getElement().querySelector(`.films-list .films-list__container`);
+
   let showingFilmsCount = SHOWING_MOVIES_COUNT_ON_START;
   movies.slice(0, showingFilmsCount)
     .forEach((movie) => renderFilm(filmsListContainerElement, movie));
@@ -72,10 +76,22 @@ const renderFilmBoard = (filmsBoard, movies) => {
   });
 };
 
+const renderExtraFilmBoard = (filmsBoard, movies, title) => {
+  const extraMoviesComponent = new ExtraFilmComponent(title);
+  render(filmsBoard.getElement(), extraMoviesComponent.getElement(), RenderPosition.BEFOREEND);
+
+  const board = extraMoviesComponent.getElement().querySelector(`.films-list__container`);
+
+  movies.forEach((movie)=> renderFilm(board, movie));
+};
+
 const filmsContentElement = new FilmsBoardComponent();
 render(pageMainElement, filmsContentElement.getElement(), RenderPosition.BEFOREEND);
 
 renderFilmBoard(filmsContentElement, films);
+renderExtraFilmBoard(filmsContentElement, topRatedFilms, `Top rated`);
+renderExtraFilmBoard(filmsContentElement, mostCommentedFilms, `Most commented`);
+
 
 // const {body: bodyElement} = document;
 
