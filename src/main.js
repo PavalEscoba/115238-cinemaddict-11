@@ -4,6 +4,7 @@ import SortComponent from "./components/sort";
 import FilmsBoardComponent from "./components/film-board";
 import FilmsListComponent from "./components/films-list";
 import FilmCardComponent from "./components/film-card";
+import NoFilmsComponent from "./components/no-films";
 import ExtraFilmComponent from "./components/extra-film";
 import FilmDetailsComponent from "./components/film-details";
 import ShowMoreBtnComponent from "./components/show-more-btn";
@@ -47,6 +48,14 @@ const renderFilm = (board, film) => {
   const cardTitleElement = filmCardComponent.getElement().querySelector(`.film-card__title`);
   const popupCloseIconElement = filmDetailsCardComponent.getElement().querySelector(`.film-details__close-btn`);
 
+  const onEscKeyDown = (evt) => {
+    const isEscKey = evt.key === `Escape` || evt.key === `Esc`;
+    if (isEscKey) {
+      hidePopup(evt);
+      document.removeEventListener(`keydown`, onEscKeyDown);
+    }
+  };
+
   const showPopup = (evt) => {
     evt.preventDefault();
     bodyElement.appendChild(filmDetailsCardComponent.getElement());
@@ -60,15 +69,23 @@ const renderFilm = (board, film) => {
   [cardPosterElement, cardCommentElement, cardTitleElement].forEach((elem) => {
     elem.addEventListener(`click`, (evt) => {
       showPopup(evt);
+      document.addEventListener(`keydown`, onEscKeyDown);
     });
   });
 
   popupCloseIconElement.addEventListener(`click`, (evt) => {
     hidePopup(evt);
+    document.removeEventListener(`keydown`, onEscKeyDown);
   });
 };
 
 const renderFilmBoard = (filmsBoard, movies) => {
+
+  if (movies.length === 0) {
+    render(filmsBoard.getElement(), new NoFilmsComponent().getElement(), RenderPosition.BEFOREEND);
+    return;
+  }
+
   render(filmsBoard.getElement(), new FilmsListComponent().getElement(), RenderPosition.BEFOREEND);
 
   const filmsListElement = filmsBoard.getElement().querySelector(`.films-list`);
@@ -96,6 +113,10 @@ const renderFilmBoard = (filmsBoard, movies) => {
 };
 
 const renderExtraFilmBoard = (filmsBoard, movies, title) => {
+  if (movies.length === 0) {
+    return;
+  }
+
   const extraMoviesComponent = new ExtraFilmComponent(title);
   render(filmsBoard.getElement(), extraMoviesComponent.getElement(), RenderPosition.BEFOREEND);
 
