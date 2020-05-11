@@ -31,7 +31,7 @@ const generateCommentsMarkup = (commentsArray) => {
 };
 
 const createFilmDetailsTemplate = (film) => {
-  const {poster, age, title, originalTitle, rating, comments, directorName, writerNames, actorNames, releaseDate, duration, country, genres, description, isAddedToWatchList, isWatched, isFavorite} = film;
+  const {poster, age, title, originalTitle, rating, comments, directorName, writerNames, actorsNames, releaseDate, duration, country, genres, description, isAddedToWatchList, isWatched, isFavorite} = film;
 
   const genresMarkup = generateGenresMarkup(genres);
   const commentsMarkup = generateCommentsMarkup(comments);
@@ -63,11 +63,11 @@ const createFilmDetailsTemplate = (film) => {
                 </tr>
                 <tr class="film-details__row">
                   <td class="film-details__term">Writers</td>
-                  <td class="film-details__cell">${writerNames}</td>
+                  <td class="film-details__cell">${writerNames.join(`, `)}</td>
                 </tr>
                 <tr class="film-details__row">
                   <td class="film-details__term">Actors</td>
-                  <td class="film-details__cell">${actorNames}</td>
+                  <td class="film-details__cell">${actorsNames.join(`, `)}</td>
                 </tr>
                 <tr class="film-details__row">
                   <td class="film-details__term">Release Date</td>
