@@ -1,3 +1,5 @@
+import {createElement} from "../utils";
+
 const generateGenresMarkup = (genresArray) => {
   return genresArray.map((genre) => {
     return `<span class="film-details__genre">${genre}</span>`;
@@ -28,8 +30,8 @@ const generateCommentsMarkup = (commentsArray) => {
   }).join(`\n`);
 };
 
-export const createFilmDetailsTemplate = (film) => {
-  const {poster, age, title, originalTitle, rating, comments, directorName, writerNames, actorNames, releaseDate, duration, country, genres, description, isAddedToWatchList, isWatched, isFavorite} = film;
+const createFilmDetailsTemplate = (film) => {
+  const {poster, age, title, originalTitle, rating, comments, directorName, writerNames, actorsNames, releaseDate, duration, country, genres, description, isAddedToWatchList, isWatched, isFavorite} = film;
 
   const genresMarkup = generateGenresMarkup(genres);
   const commentsMarkup = generateCommentsMarkup(comments);
@@ -61,11 +63,11 @@ export const createFilmDetailsTemplate = (film) => {
                 </tr>
                 <tr class="film-details__row">
                   <td class="film-details__term">Writers</td>
-                  <td class="film-details__cell">${writerNames}</td>
+                  <td class="film-details__cell">${writerNames.join(`, `)}</td>
                 </tr>
                 <tr class="film-details__row">
                   <td class="film-details__term">Actors</td>
-                  <td class="film-details__cell">${actorNames}</td>
+                  <td class="film-details__cell">${actorsNames.join(`, `)}</td>
                 </tr>
                 <tr class="film-details__row">
                   <td class="film-details__term">Release Date</td>
@@ -134,3 +136,26 @@ export const createFilmDetailsTemplate = (film) => {
       </form>
     </section>`;
 };
+
+export default class FilmDetailsComponent {
+  constructor(film) {
+    this._film = film;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createFilmDetailsTemplate(this._film);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
